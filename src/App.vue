@@ -1,47 +1,42 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import {ref} from 'vue'
+const contador = ref(0)
+function icrementarContador(){
+  contador.value ++
+}
+function decrementarContador(){
+  if(contador.value>0){
+  contador.value--
+  }
+}
+function resetContador(){
+  contador.value = 0
+}
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <button id="icrementar" @click="icrementarContador">+</button>
+  <button id="decrementar" @click="decrementarContador">-</button>
+  <button id="reset" @click="resetContador">Resetar</button>
+  <br>
+  <p>Valor do contador é = {{ contador }}</p>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+button {
+  border-radius: 6px
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+#icrementar{
+background-color: darkgreen;
+color: white;
 }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+#decrementar{
+  background-color: rgba(255, 45, 45, 0.658);
+  color: black;
+}
+#reset{
+  background-color: rgba(128, 128, 128, 0.637);
+  color: rgb(54, 51, 51);
 }
 </style>
